@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="JhPrize.WorkPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JhPrize"
+	xmlns:wiget="using:JhPrize.Widget"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="6*" MaxWidth="400"/>
+			<ColumnDefinition Width="4*"/>
+		</Grid.ColumnDefinitions>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border x:Name="BorderErrorMsg" Visibility="Collapsed" Height="40" Background="Yellow">
+                    <TextBlock Style="{StaticResource CenterErrorMsg}" Text="网络异常"/>
+                </Border>
+                <ListView Grid.Row="1" x:Name="ListViewPrizePool" Background="{ThemeResource SystemControlAcrylicWindowBrush}" SelectionMode="None" ItemsSource="{x:Bind PrizePools}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Style="{StaticResource PrizePoolLabelTextBlock}" Foreground="DarkSeaGreen" Text="{Binding Title}" Margin="5,10"/>
+                                    <StackPanel Margin="10" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+                                        <TextBlock x:Name="TextBlockCapacity" Style="{StaticResource PrizeMarkTextBlock}" Foreground="SeaGreen" Text="{Binding Capacity}"/>
+                                        <TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text=" 总额:"/>
+                                        <TextBlock x:Name="TextBlockCount" Style="{StaticResource PrizeMarkTextBlock}" Foreground="OrangeRed" Text="{Binding Count}"/>
+                                        <TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text=" 已抽奖:"/>
+                                        <TextBlock x:Name="TextBlockAcceptCount" Style="{StaticResource PrizeMarkTextBlock}" Foreground="Orange" Text="{Binding AcceptCount}"/>
+                                        <TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text="已领奖:"/>
+                                    </StackPanel>
+                                </Grid>
+                                <ListView SelectionMode="None" ItemsSource="{Binding Prizes}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical" Spacing="0">
+                                                <Grid Height="Auto">
+                                                    <Grid.ColumnDefinitions >
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock x:Name="TextBlockTitle" Style="{StaticResource PrizeLabelTextBlock}" Text="{Binding Title}" Margin="10" />
+                                                    <StackPanel Margin="10" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+                                                        <TextBlock x:Name="TextBlockCapacity" Style="{StaticResource PrizeMarkTextBlock}" Foreground="SeaGreen" Text="{Binding Capacity}"/>
+                                                        <TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text=" 总额:"/>
+                                                        <TextBlock x:Name="TextBlockCount" Style="{StaticResource PrizeMarkTextBlock}" Foreground="OrangeRed" Text="{Binding Count}"/>
+                                                        <TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text=" 已抽奖:"/>
+                                                        <TextBlock x:Name="TextBlockAcceptCount" Style="{StaticResource PrizeMarkTextBlock}" Foreground="Orange" Text="{Binding AcceptCount}"/>
+                                                        <TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text="已领奖:"/>
+                                                    </StackPanel>
+
+                                                </Grid>
+                                                <TextBlock x:Name="TextBlockDetail" Style="{StaticResource PrizeDetailTextBlock}" Margin="10,5" Text="{Binding Detail}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button x:Name="ButtonTest" Grid.Row="2" Style="{StaticResource FullAccentButton}">
+                    <TextBlock x:Name="TextBlockFresh" Style="{StaticResource CenterTextBlock}" Text="刷新"/>
+                </Button>
+            </Grid>
+
+
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="TextBlockTitle" Style="{StaticResource LeftTitleTextBlock}" Text="123123"/>
+            <Grid Grid.Row="1" HorizontalAlignment="Center" Width="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="80"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="TextBlockResult" Style="{StaticResource CenterTextBlockH1}" Text="" Foreground="RosyBrown" Margin="0,20"/>
+                <StackPanel Visibility="Collapsed" x:Name="StackPanelPrize" Grid.Row="1" Orientation="Vertical" Spacing="15">
+                    <TextBlock x:Name="TextBlockGroup" Style="{StaticResource CenterTextBlockH3}" FontWeight="Bold" Foreground="DarkSeaGreen" Text="10000"/>
+                    <TextBlock x:Name="TextBlockPrize" Style="{StaticResource CenterTextBlockH1}" Text="一等奖" />
+                    <TextBlock x:Name="TextBlockPrizeDetail" Style="{StaticResource LeftPrizeDetailTextBlock}" Margin="20,0" Text="123"/>
+                </StackPanel>
+                <TextBox x:Name="TextBoxNo" Grid.Row="2" FontSize="36"  PlaceholderText="请输入队伍号，然后回车。"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

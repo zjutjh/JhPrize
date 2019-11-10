@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="JhPrize.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JhPrize"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="60,0" VerticalAlignment="Center" Spacing="40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource CenterTextBlockH3}" Text="Domain"/>
+                <TextBox x:Name="TextBoxDomain" Grid.Column="1" FontSize="36" Text="localhost" />
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="7*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource CenterTextBlockH3}" Text="Pass"/>
+                <PasswordBox x:Name="PasswordBoxPass" Grid.Column="1" FontSize="36" Password="123456" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,37 @@
+﻿<UserControl
+    x:Class="JhPrize.Widget.PrizePoolCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:widget="using:JhPrize.Widget"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+	<StackPanel Orientation="Vertical">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
+
+			<TextBlock Style="{StaticResource PrizePoolLabelTextBlock}" Foreground="DarkSeaGreen" Text="{x:Bind PrizePool.Title}" Margin="5,10"/>
+			<StackPanel Margin="10" Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
+				<TextBlock x:Name="TextBlockCapacity" Style="{StaticResource PrizeMarkTextBlock}" Foreground="SeaGreen" Text="{x:Bind Capacity}"/>
+				<TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text=" 总额:"/>
+				<TextBlock x:Name="TextBlockCount" Style="{StaticResource PrizeMarkTextBlock}" Foreground="OrangeRed" Text="{x:Bind Count}"/>
+				<TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text=" 已抽奖:"/>
+				<TextBlock x:Name="TextBlockAcceptCount" Style="{StaticResource PrizeMarkTextBlock}" Foreground="Orange" Text="{x:Bind AcceptCount}"/>
+				<TextBlock Style="{StaticResource PrizeMarkTextBlock}" Text="已领奖:"/>
+			</StackPanel>
+		</Grid>
+		<ListView ItemsSource="{x:Bind PrizePool.Prizes}">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<widget:PrizeCard Prize="{Binding}"/>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackPanel>
+</UserControl>
