@@ -11,10 +11,11 @@
 
     <Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="6*" MaxWidth="400"/>
-			<ColumnDefinition Width="4*"/>
+			<ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="4*"/>
 		</Grid.ColumnDefinitions>
-        <Grid>
+        <Grid x:Name="GridSlide" Width="400" Visibility="Visible">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -24,7 +25,8 @@
                 <Border x:Name="BorderErrorMsg" Visibility="Collapsed" Height="40" Background="Yellow">
                     <TextBlock Style="{StaticResource CenterErrorMsg}" Text="网络异常"/>
                 </Border>
-                <ListView Grid.Row="1" x:Name="ListViewPrizePool" Background="{ThemeResource SystemControlAcrylicWindowBrush}" SelectionMode="None" ItemsSource="{x:Bind PrizePools}">
+                
+                    <ListView Grid.Row="1" x:Name="ListViewPrizePool" Background="{ThemeResource SystemControlAcrylicWindowBrush}" SelectionMode="None" ItemsSource="{x:Bind PrizePools}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
@@ -82,6 +84,11 @@
 
         </Grid>
         <Grid Grid.Column="1">
+            <Button x:Name="ButtonSlideState" Style="{StaticResource FullAccentButton}" Height="100">
+                <TextBlock Style="{StaticResource CenterTextBlockH3}" Text="&lt;"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition />

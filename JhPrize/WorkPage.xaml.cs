@@ -37,7 +37,20 @@ namespace JhPrize
             navManager.BackRequested += WorkPage_BackRequested;
             navManager.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             ButtonTest.Click += ButtonTest_Click;
+            ButtonSlideState.Click += ButtonSlideState_Click;
             TextBoxNo.KeyUp += TextBoxNo_KeyUp;
+        }
+
+        private void ButtonSlideState_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridSlide.Visibility == Visibility.Collapsed)
+            {
+                GridSlide.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                GridSlide.Visibility = Visibility.Collapsed;
+            }
         }
 
         private async void TextBoxNo_KeyUp(object sender, KeyRoutedEventArgs e)
